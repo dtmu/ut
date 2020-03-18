@@ -92,6 +92,7 @@ func action(c *cli.Context) error {
 		fmt.Println(arg, "cannot be convert to UTC time.")
 		return e
 	}
-	fmt.Println(time.Unix(0, int64(ut)*int64(time.Millisecond)).In(time.UTC))
+	layout := "2006-01-02 15:04:05.000"
+	fmt.Println(time.Unix(0, int64(ut)*int64(time.Millisecond)).In(time.UTC).Format(layout))
 	return nil
 }
