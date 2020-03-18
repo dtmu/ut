@@ -12,3 +12,5 @@ $ ut 2020-03-18
 $ ut 1584494700000
 2020-03-18 01:25:00 +0000 UTC
 ```
+## Binay
+You can download binary from bin directory According to your environment.
