@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"github.com/urfave/cli"
 	"os"
@@ -21,10 +22,15 @@ func main() {
 func action(c *cli.Context) error {
 	args := c.Args().Slice()
 	if len(args) == 0 || strings.Trim(c.Args().Get(0), " ") == "" {
-		fmt.Println("Please check usage of this command by executing 'ut -h'")
-		return nil
+		em := "Please check usage of this command by executing 'ut -h'"
+		fmt.Println(em)
+		return errors.New(em)
 	}
 	arg := strings.Join(args, " ")
+	if arg == "now" {
+		fmt.Println(time.Now().UnixNano() / int64(time.Millisecond))
+		return nil
+	}
 	if strings.Contains(arg, "/") || strings.Contains(arg, "-") {
 		t, e := time.Parse("2006-01-02 15:04:05.000", arg)
 		if e == nil {
